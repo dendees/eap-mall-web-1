@@ -1,0 +1,25 @@
+@use './reset.scss';
+@use './iconfont/iconfont.css';
+
+#app {
+  color: $primary-color-dark;
+  line-height: $line-height;
+  font-weight: normal;
+}
+
+h1 {
+  font-size: $font-size*2;
+}
+
+.w100 {
+  width: 100%;
+}
+.wrap {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.dark-box {
+  background-color:  $primary-bg-dark;
+  color: $primary-bg-dark-color;
+}
