@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1488734",
+      "name": "plus",
+      "font_class": "plus",
+      "unicode": "e66c",
+      "unicode_decimal": 58988
+    },
+    {
+      "icon_id": "37014797",
+      "name": "heart-01",
+      "font_class": "heart-01",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "6782621",
+      "name": "语言",
+      "font_class": "yuyan",
+      "unicode": "e64f",
+      "unicode_decimal": 58959
+    },
+    {
       "icon_id": "122696",
       "name": "email",
       "font_class": "email",

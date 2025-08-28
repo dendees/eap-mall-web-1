@@ -1,25 +1,96 @@
 @use './reset.scss';
-@use './iconfont/iconfont.css';
 
 #app {
   color: $primary-color-dark;
   line-height: $line-height;
   font-weight: normal;
+  font-size: 0.25rem;
 }
 
 h1 {
   font-size: $font-size*2;
 }
 
-.w100 {
+.full-width {
   width: 100%;
 }
-.wrap {
+.wrapper {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 1420px;
 }
 
-.dark-box {
+
+.dark {
   background-color:  $primary-bg-dark;
   color: $primary-bg-dark-color;
+  a{
+    color: $primary-bg-dark-color;
+    text-decoration: none;
+    &:hover {
+      color: $primary-color-light;
+      text-decoration: underline;
+    }
+  }
+}
+
+.common {
+  color: $primary-color-dark;
+  a {
+    color: $primary-color-dark;
+    text-decoration: none;
+    &:hover {
+      color: $primary-color;
+      text-decoration: underline;
+    }
+  }
+}
+
+.between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@for $i from 1 through 10 {
+  .pl-#{$i}{
+    padding-left: $i * $base-gap;
+  }
+  .pr-#{$i}{
+    padding-right: $i * $base-gap;
+  }
+  .pt-#{$i}{
+    padding-top: $i * $base-gap;
+  }
+  .ml-#{$i}{
+    margin-left: $i * $base-gap;
+  }
+  .mr-#{$i}{
+    margin-right: $i * $base-gap;
+  }
+  .mt-#{$i}{
+    margin-top: $i * $base-gap;
+  }
+  .mb-#{$i}{
+    margin-bottom: $i * $base-gap;
+  }
+}
+
+.line-input {
+ &.el-autocomplete{
+  .el-input__wrapper{
+    padding: 0;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px #666 solid;
+    .el-input__inner {
+      height: auto;
+      line-height: 1.5;
+    }
+  }
+ }
+}
+
+h2 {
+  font-size: large;
 }
