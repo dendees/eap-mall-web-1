@@ -52,7 +52,7 @@ import { reactive, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import navBar from '@/components/NavBar.vue'
 import listScroll from '@/components/ListScroll.vue'
-import { getCategory } from "@/service/good"
+import { getCategory } from '@/api/product/goods'
 import { showLoadingToast, closeToast } from 'vant'
 const router = useRouter()
 // composition API 获取 refs 的形式

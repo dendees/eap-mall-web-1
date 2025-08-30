@@ -15,8 +15,7 @@
 import { reactive, onMounted } from 'vue'
 import md5 from 'js-md5'
 import sHeader from '@/components/SimpleHeader.vue'
-import { getUserInfo, EditUserInfo } from '@/service/user'
-import { logout } from '@/api/member/user'
+import { getUserInfo, updateUserInfo } from '@/api/member/user'
 import { setLocal } from '@/common/js/utils'
 import { showSuccessToast } from 'vant'
 const state = reactive({

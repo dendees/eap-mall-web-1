@@ -64,7 +64,7 @@ import { useCartStore } from '@/stores/cart'
 import { showToast, showLoadingToast, closeToast, showFailToast } from 'vant'
 import navBar from '@/components/NavBar.vue'
 import sHeader from '@/components/SimpleHeader.vue'
-import { getCart, deleteCartItem, modifyCart } from '@/service/cart'
+import { getCart, deleteCartItem, updateCartItem, getByCartItemIds } from '@/api/trade/cart'  // 使用新版API
 
 const router = useRouter()
 const cart = useCartStore()
@@ -105,6 +105,7 @@ const goTo = () => {
   router.push({ path: '/home' })
 }
 
+// 修改购物车商品数量的函数
 const onChange = async (value, detail) => {
   if (value > 5) {
     showFailToast('超出单个商品的最大购买数量')
@@ -114,22 +115,15 @@ const onChange = async (value, detail) => {
     showFailToast('商品不得小于0')
     return
   }
-  /**
-   * 这里的操作是因为，后面修改购物车后，手动添加的计步器的数据，为了防止数据不对
-   * 这边做一个拦截处理，如果点击的时候，购物车单项的 goodsCount 等于点击的计步器数字，
-   * 那么就不再进行修改操作
-  */
   if (state.list.find(item => item.cartItemId == detail.name)?.goodsCount == value) return
+  
   showLoadingToast({ message: '修改中...', forbidClick: true });
   const params = {
     cartItemId: detail.name,
     goodsCount: value
   }
-  await modifyCart(params)
-  /**
-   * 修改完成后，没有请求购物车列表，是因为闪烁的问题，
-   * 这边手动给操作的购物车商品修改数据
-  */
+  await updateCartItem(params)  // 使用新版API
+  
   state.list.forEach(item => {
     if (item.cartItemId == detail.name) {
       item.goodsCount = value

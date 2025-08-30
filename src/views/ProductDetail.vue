@@ -42,7 +42,7 @@
 import { reactive, onMounted, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useCartStore } from '@/stores/cart'
-import { getDetail } from '@/service/good'
+import { getDetail } from '@/api/product/goods'  // 使用新版API
 import { addCart } from '@/api/trade/cart'
 import sHeader from '@/components/SimpleHeader.vue'
 import { showSuccessToast } from 'vant'

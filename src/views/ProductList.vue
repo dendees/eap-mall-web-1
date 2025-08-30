@@ -48,7 +48,7 @@
 <script setup>
 import { reactive } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { search } from '@/service/good'
+import { search } from '@/api/product/goods'  // 使用新版API
 const route = useRoute()
 const router = useRouter()
 const state = reactive({
@@ -64,6 +64,7 @@ const state = reactive({
   page: 1,
   orderBy: ''
 })
+// 修复初始化函数
 const init = async () => {
   const { categoryId } = route.query
   if (!categoryId && !state.keyword) {
@@ -71,12 +72,21 @@ const init = async () => {
     state.loading = false;
     return
   }
-  const { data, data: { list } } = await search({ pageNumber: state.page, goodsCategoryId: categoryId, keyword: state.keyword, orderBy: state.orderBy })
   
-  state.productList = state.productList.concat(list)
-  state.totalPage = data.totalPage
+  const params = {
+    pageNo: state.page,  // 使用新版API参数名
+    pageSize: 10,
+    categoryId: categoryId,
+    keyword: state.keyword,
+    sortField: state.orderBy
+  }
+  
+  const { data } = await search(params)
+  
+  state.productList = state.productList.concat(data.list)
+  state.totalPage = data.pages  // 使用新版API返回字段
   state.loading = false;
-  if (state.page >= data.totalPage) state.finished = true
+  if (state.page >= data.pages) state.finished = true
 }
 
 const goBack = () => {

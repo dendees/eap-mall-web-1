@@ -1,0 +1,53 @@
+// 响应式设计断点
+@mobile-max: 768px;
+@tablet-min: 769px;
+@tablet-max: 1024px;
+@desktop-min: 1025px;
+
+// 设备类型样式
+.device-mobile {
+  .pc-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: block;
+  }
+}
+
+.device-pc {
+  .mobile-only {
+    display: none !important;
+  }
+  .pc-only {
+    display: block;
+  }
+}
+
+// 响应式网格
+.responsive-grid {
+  display: grid;
+  gap: 20px;
+  
+  @media (max-width: @mobile-max) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (min-width: @tablet-min) and (max-width: @tablet-max) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (min-width: @desktop-min) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// 容器最大宽度
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  
+  @media (max-width: @mobile-max) {
+    padding: 0 15px;
+  }
+}
