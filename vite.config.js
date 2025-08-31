@@ -7,7 +7,8 @@ import { VantResolver } from 'unplugin-vue-components/resolvers'
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 8080
+    port: 8080,
+    host: '0.0.0.0' // 允许外部访问，便于不同设备测试
   },
   plugins: [
     vue(),
@@ -16,6 +17,13 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        additionalData: `@import "@/common/style/responsive.less";`
+      }
     }
   }
 })
