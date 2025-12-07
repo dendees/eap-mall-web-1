@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     toList(item) {
-      this.$router.push({path:'/auction/'+item.auctionId})
+      this.$router.push({path:'/auction'})
     }
   }
 }

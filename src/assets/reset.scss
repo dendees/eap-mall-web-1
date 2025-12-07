@@ -133,7 +133,17 @@ table {
     border-spacing: 0;
 }
 :root {
-    --el-color-primary:#696969;
+    --el-color-primary:#191919;
     --el-text-color-regular: #696969;
     --el-font-size-base: 12px;
+    --el-color-primary-light-3: #393939;
+    --el-border-radius-base: 2px;
+    --el-tag-border-radius: 0;
+    --el-color-info: #393939;
+    --el-color-warning:#E56767;
+    --el-color-success:#009688;
+    --el-button-hover-bg-color: #E56767;
+}
+.el-tag {
+    --el-tag-border-radius: 0;
 }

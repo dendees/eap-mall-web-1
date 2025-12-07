@@ -5,44 +5,7 @@
     <div class="wrapper main-search">
       <div class="main-search-header">
         <h2>商品搜索</h2>
-        <div class="main-search-content">
-          <div class="good-select">
-            <div class="round-select">
-              <ul>
-                <li>
-                  <p>
-                    <span>A场</span>
-                    <span>进行中</span>
-                  </p>
-                  <span>
-                    今日10:00 - 16:00``
-                  </span>
-                </li>
-                <li>
-                  <p>
-                    <span>B场</span>
-                    <span>即将开始</span>
-                  </p>
-                  <span>
-                    周三 10:00 - 16:00
-                  </span>
-                </li>
-              </ul>
-            </div>
-            <div class="type-select">
-              <ul>
-                <li>包袋</li>
-                <li>配饰</li>
-                <li>手表</li>
-              </ul>
-            </div>
-            <div class="brand-select">
-              <ul>
-                <li></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>

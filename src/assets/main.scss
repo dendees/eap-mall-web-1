@@ -18,6 +18,12 @@ h1 {
   margin: 0 auto;
   max-width: 1420px;
 }
+.pointer {
+  cursor: pointer;
+  :hover {
+    opacity: 0.8;
+  }
+}
 
 
 .dark {

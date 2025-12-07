@@ -237,7 +237,6 @@ export default {
   },
   methods: {
     changeIndex(i){
-      console.log(i)
       this.currentIndex = i
     },
     changeCarousel(index){
