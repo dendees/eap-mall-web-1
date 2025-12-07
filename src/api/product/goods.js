@@ -7,7 +7,7 @@ import request from '@/utils/request'
  */
 export function getDetail(id) {
   return request.get({
-    url: `/product/spu/get-detail?id=${id}`
+    url: `/auction/product/get?id=${id}`
   })
 }
 
@@ -40,7 +40,7 @@ export function search(params) {
  */
 export function getList(params) {
   return request.get({
-    url: '/product/spu/list',
+    url: '/auction/product/page',
     params
   })
 }

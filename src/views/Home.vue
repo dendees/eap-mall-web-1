@@ -1,66 +1,49 @@
 <template>
   <div>
-    <header class="home-header wrap" :class="{'active' : state.headerScroll}">
-      <router-link tag="i" to="./category"><i class="nbicon nbmenu2"></i></router-link>
-      <div class="header-search">
-        <span class="app-name">EAP 商城</span>
-        <i class="iconfont icon-search"></i>
-        <router-link tag="span" class="search-title" to="./product-list?from=home">山河无恙，人间皆安</router-link>
+    <s-header></s-header>
+    <swiper :swiper-list="state.swiperList" class="mt-4"></swiper>
+    <div class="wrapper main-search">
+      <div class="main-search-header">
+        <h2>商品搜索</h2>
+        <div class="main-search-content">
+          <div class="good-select">
+            <div class="round-select">
+              <ul>
+                <li>
+                  <p>
+                    <span>A场</span>
+                    <span>进行中</span>
+                  </p>
+                  <span>
+                    今日10:00 - 16:00``
+                  </span>
+                </li>
+                <li>
+                  <p>
+                    <span>B场</span>
+                    <span>即将开始</span>
+                  </p>
+                  <span>
+                    周三 10:00 - 16:00
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div class="type-select">
+              <ul>
+                <li>包袋</li>
+                <li>配饰</li>
+                <li>手表</li>
+              </ul>
+            </div>
+            <div class="brand-select">
+              <ul>
+                <li></li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
-      <router-link class="login" tag="span" to="./login" v-if="!state.isLogin">登录</router-link>
-      <router-link class="login" tag="span" to="./user" v-else>
-        <van-icon name="manager-o" />
-      </router-link>
-    </header>
-    <nav-bar />
-    <swiper :list="state.swiperList"></swiper>
-    <div class="category-list">
-      <div v-for="item in state.categoryList" v-bind:key="item.categoryId" @click="tips">
-        <img :src="item.imgUrl">
-        <span>{{item.name}}</span>
-      </div>
-    </div>
-    <div class="good">
-      <header class="good-header">新品上线</header>
-      <van-skeleton title :row="3" :loading="state.loading">
-        <div class="good-box">
-          <div class="good-item" v-for="item in state.newGoodses" :key="item.goodsId" @click="goToDetail(item)">
-            <img :src="$filters.prefix(item.goodsCoverImg)" alt="">
-            <div class="good-desc">
-              <div class="title">{{ item.goodsName }}</div>
-              <div class="price">¥ {{ item.sellingPrice }}</div>
-            </div>
-          </div>
-        </div>
-      </van-skeleton>
-    </div>
-    <div class="good">
-      <header class="good-header">热门商品</header>
-      <van-skeleton title :row="3" :loading="state.loading">
-        <div class="good-box">
-          <div class="good-item" v-for="item in state.hots" :key="item.goodsId" @click="goToDetail(item)">
-            <img :src="$filters.prefix(item.goodsCoverImg)" alt="">
-            <div class="good-desc">
-              <div class="title">{{ item.goodsName }}</div>
-              <div class="price">¥ {{ item.sellingPrice }}</div>
-            </div>
-          </div>
-        </div>
-      </van-skeleton>
-    </div>
-    <div class="good" :style="{ paddingBottom: '100px'}">
-      <header class="good-header">最新推荐</header>
-      <van-skeleton title :row="3" :loading="state.loading">
-        <div class="good-box">
-          <div class="good-item" v-for="item in state.recommends" :key="item.goodsId" @click="goToDetail(item)">
-            <img :src="$filters.prefix(item.goodsCoverImg)" alt="">
-            <div class="good-desc">
-              <div class="title">{{ item.goodsName }}</div>
-              <div class="price">¥ {{ item.sellingPrice }}</div>
-            </div>
-          </div>
-        </div>
-      </van-skeleton>
     </div>
   </div>
 </template>
@@ -69,7 +52,7 @@
 import { reactive, onMounted, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import swiper from '@/components/Swiper.vue'
-import navBar from '@/components/NavBar.vue'
+import sHeader from '@/components/SimpleHeader.vue'
 import { getHome } from '@/service/home'
 import { getLocal } from '@/common/js/utils'
 import { showLoadingToast, closeToast, showToast } from 'vant'
@@ -77,7 +60,29 @@ import { useCartStore } from '@/stores/cart'
 const cart = useCartStore()
 const router = useRouter()
 const state = reactive({
-  swiperList: [], // 轮播图列表
+  swiperList: [
+    {
+      name: 'xx1拍卖',
+      time: '2025/10/01 9:00~2025/10/01 12:00',
+      imgUrl: '/static-files/banner/banner1.webp',
+      text: 'xx1拍卖xx1拍卖xx1拍卖xx1拍卖xx1拍卖',
+      auctionId: 100001
+    },
+     {
+      name: 'xx2拍卖',
+      time: '2025/10/02 9:00~2025/10/01 12:00',
+      imgUrl: '/static-files/banner/banner2.webp',
+      auctionId: 100002,
+      text: 'xx2拍卖xx1拍卖xx1拍卖xx1拍卖xx1拍卖',
+    },
+    {
+      name: 'xx3拍卖',
+      time: '2025/10/03 9:00~2025/10/01 12:00',
+      imgUrl: '/static-files/banner/banner3.jpg',
+      auctionId: 100003,
+      text: 'xx3拍卖xx3拍卖xx1拍卖xx1拍卖xx1拍卖',
+    },
+  ], // 轮播图列表
   isLogin: false, // 是否已登录
   headerScroll: false, // 滚动透明判断
   hots: [],
@@ -148,7 +153,7 @@ onMounted(async () => {
     message: '加载中...',
     forbidClick: true
   });
-  const { data } = await getHome()
+  // const { data } = await getHome()
   state.swiperList = data.carousels
   state.newGoodses = data.newGoodses
   state.hots = data.hotGoodses

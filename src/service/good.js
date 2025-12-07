@@ -1,11 +1,16 @@
 import axios from '../utils/axios'
 import * as goodsApi from '@/api/product/goods'
 
+export function getList(params) {
+  // 兼容旧版接口
+  return goodsApi.getList(params);
+}
 /**
  * 获取商品详情
  * @param {number} id - 商品ID
  * @returns {Promise<any>}
  */
+
 export function getDetail(id) {
   // 兼容旧版接口
   return goodsApi.getDetail(id);

@@ -50,8 +50,8 @@ const router = createRouter({
     },
     {
       path: '/product/:id',
-      name: 'product',
-      component: () => import('@/views/ProductDetail.vue'),
+      name: 'productDetail',
+      component: () => import('@/components/productDetail.vue'),
       meta: {
         index: 3
       }
@@ -124,7 +124,7 @@ const router = createRouter({
     {
       path: '/auction',
       name: 'auction-list',
-      component: () => import('@/views/AuctionList.vue'),
+      component: () => import('@/components/AuctionDetail.vue'),
       meta: {
         index: 1
       }

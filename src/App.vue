@@ -1,7 +1,5 @@
 <template>
-  <div class="layout">
     <RouterView />
-  </div>
 </template>
 
 <script setup>
@@ -27,7 +25,7 @@ router.beforeEach((to, from) => {
 html, body {
   height: 100%;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 #app {
   height: 100%;
